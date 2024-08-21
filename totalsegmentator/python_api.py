@@ -372,6 +372,17 @@ def totalsegmentator(input: Union[str, Path, Nifti1Image], output: Union[str, Pa
         crop = "body"
         model = "3d_fullres"
         folds = [0]
+    
+    # addition for brown adipose tissue segmentation
+    elif task == "bat":
+        task_id = 901
+        resample = None
+        trainer = "nnUNetTrainerNoMirroring"
+        crop = None
+        model = "3d_fullres"
+        folds = [0,1,2,3,4]
+        if fast: raise ValueError("task brown_adipose_tissue does not work with option --fast")
+        print("Brown adipose tissue is an addition by Kasper Jørgensen")
 
     crop_path = output if crop_path is None else crop_path
 
@@ -463,7 +474,7 @@ def totalsegmentator(input: Union[str, Path, Nifti1Image], output: Union[str, Pa
         crop = body_seg
         if verbose: print(f"Rough body segmentation generated in {time.time()-st:.2f}s")
 
-    folds = [0]  # None
+    # folds = [0]  # None
     seg_img, ct_img, stats = nnUNet_predict_image(input, output, task_id, model=model, folds=folds,
                             trainer=trainer, tta=False, multilabel_image=ml, resample=resample,
                             crop=crop, crop_path=crop_path, task_name=task, nora_tag=nora_tag, preview=preview,

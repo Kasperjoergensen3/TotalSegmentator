@@ -464,7 +464,11 @@ class_map = {
     },
     "test": {
         1: "carpal"
-    }
+    },
+    # my addition for brown_adipose_tissue
+    "bat": {
+        1: "brown_adipose_tissue"
+    },
 }
 
 

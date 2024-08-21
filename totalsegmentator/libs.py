@@ -103,14 +103,13 @@ def download_url_and_unpack(url, config_dir):
     #     http.client.HTTPConnection._http_vsn_str = 'HTTP/1.0'
 
     tempfile = config_dir / "tmp_download_file.zip"
-
     try:
         st = time.time()
         with open(tempfile, 'wb') as f:
             # session = requests.Session()  # making it slower
-
             with requests.get(url, stream=True) as r:
                 r.raise_for_status()
+                print(f"Downloading from {url}")
 
                 # With progress bar
                 total_size = int(r.headers.get('content-length', 0))
@@ -301,6 +300,26 @@ def download_pretrained_weights(task_id):
         weights_path = config_dir / "Dataset737_TotalSegmentatorMRI_face_495subj"
     elif task_id == 409:
         weights_path = config_dir / "Dataset409_neuro_550subj"
+    
+    #My addition for brown adipose tissue
+    elif task_id == 901:
+        weights_path = config_dir / "Dataset901_BAT"
+        WEIGHTS_URL = "https://drive.google.com/uc?export=download&id=1yApnKYmoT8ewczB1L8zm2TE6rqzKD5Nl"
+
+        if not weights_path.exists():
+            import gdown
+            try:
+                tmp_file = config_dir / "tmp_download_file.zip"
+                gdown.download(WEIGHTS_URL, str(output), quiet=False)
+                with zipfile.ZipFile(tmp_file, 'r') as zip_f:
+                    zip_f.extractall(config_dir)
+            except Exception as e:
+                raise e
+            finally:
+                if tmp_file.exists():
+                    os.remove(tmp_file)
+            
+            exit()
 
     else:
         raise ValueError(f"For task_id {task_id} no download path was found.")

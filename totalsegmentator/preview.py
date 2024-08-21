@@ -170,6 +170,10 @@ roi_groups = {
     ],
     "test": [
         ["ulna"]
+    ],
+    #my addition for brown adipose tissue
+    "bat": [
+        ["brown_adipose_tissue"]
     ]
 }
 
