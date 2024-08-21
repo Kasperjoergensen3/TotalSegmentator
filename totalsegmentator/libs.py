@@ -310,7 +310,9 @@ def download_pretrained_weights(task_id):
             import gdown
             try:
                 tmp_file = config_dir / "tmp_download_file.zip"
+                print("Downloading model for BAT Segmentation Task...")
                 gdown.download(WEIGHTS_URL, str(tmp_file), quiet=False)
+                print("Download finished. Extracting...")
                 with zipfile.ZipFile(tmp_file, 'r') as zip_f:
                     zip_f.extractall(config_dir)
             except Exception as e:
@@ -319,7 +321,6 @@ def download_pretrained_weights(task_id):
                 if tmp_file.exists():
                     os.remove(tmp_file)
             
-            exit()
 
     else:
         raise ValueError(f"For task_id {task_id} no download path was found.")
