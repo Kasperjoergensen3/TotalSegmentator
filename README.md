@@ -6,7 +6,7 @@ Tool for segmentation of most major anatomical structures in any CT or MR image.
 Contact Kasper jørgensen at kasper.joergensen.02@regionh.dk for questions. 
 ```
 TotalSegmentator -i path/to/input/ct.nii.gz \
-                 -o path/to/output/bat.segm.gz \
+                 -o path/to/output/bat.nii.gz \
                  -ta bat
 ```
 
