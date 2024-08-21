@@ -4,9 +4,9 @@ Tool for segmentation of most major anatomical structures in any CT or MR image.
 
 # NEW!!! BROWN ADIPOSE TISSUE
 Contact Kasper jørgensen at kasper.joergensen.02@regionh.dk for questions. 
-Clone the directory and install as ediatble envorinment:
+Clone the directory and install it as an editable environment:
 ```
-git clone
+git clone https://github.com/Kasperjoergensen3/TotalSegmentator.git
 pip install -e TotalSegmentator/
 ```
 and you can use the cmd line tool

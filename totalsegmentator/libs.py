@@ -310,7 +310,7 @@ def download_pretrained_weights(task_id):
             import gdown
             try:
                 tmp_file = config_dir / "tmp_download_file.zip"
-                gdown.download(WEIGHTS_URL, str(output), quiet=False)
+                gdown.download(WEIGHTS_URL, str(tmp_file), quiet=False)
                 with zipfile.ZipFile(tmp_file, 'r') as zip_f:
                     zip_f.extractall(config_dir)
             except Exception as e:
