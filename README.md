@@ -12,7 +12,7 @@ pip install -e TotalSegmentator/
 and you can use the cmd line tool
 ```
 TotalSegmentator -i path/to/input/ct.nii.gz \
-                 -o path/to/output/bat.nii.gz \
+                 -o path/to/output/dir \
                  -ta bat
 ```
 
