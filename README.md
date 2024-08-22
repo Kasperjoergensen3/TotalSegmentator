@@ -13,7 +13,8 @@ and you can use the cmd line tool
 ```
 TotalSegmentator -i path/to/input/ct.nii.gz \
                  -o path/to/output/dir \
-                 -ta bat
+                 -ta bat \
+                 -ml 
 ```
 
 **ANNOUNCEMENT: We recently added support for MR images. Try out by using the task `-ta total_mr` or see more details in our [paper](https://arxiv.org/abs/2405.19492).**
